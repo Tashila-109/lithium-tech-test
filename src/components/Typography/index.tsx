@@ -6,7 +6,7 @@ const H3 = styled.h3`
   font-weight: 600;
   line-height: 3rem;
   letter-spacing: -0.8px;
-  color: ${({ theme }) => theme.colors.typography.header};
+  color: ${({ color,theme }) => color || theme.colors.typography.header};
 `;
 
 const Title = styled.h4`
@@ -15,7 +15,7 @@ const Title = styled.h4`
   font-weight: 600;
   line-height: 2rem;
   letter-spacing: -0.4px;
-  color: ${({ theme }) => theme.colors.typography.title};
+  color: ${({ color,theme }) => color || theme.colors.typography.title};
 `;
 
 const Base = styled.p`
@@ -24,7 +24,7 @@ const Base = styled.p`
   font-weight: 600;
   line-height: 1.5rem;
   letter-spacing: -0.14px;
-  color: ${({ theme }) => theme.colors.typography.base};
+  color: ${({ color, theme }) => color || theme.colors.typography.base};
 `;
 
 const Caption = styled(Base)`
