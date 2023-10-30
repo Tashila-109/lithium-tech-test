@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
+import QueryClientProvider from '@api/QueryClientProvider';
+
 import GlobalStyles from '@/styles/globalstyles';
 
 const theme: DefaultTheme = {
@@ -19,11 +21,11 @@ const theme: DefaultTheme = {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <QueryClientProvider>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </QueryClientProvider>
   );
 }
