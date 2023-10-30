@@ -15,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Main className={inter.className}>
-        <Typography.H3>Next.js + TypeScript + Styled Components</Typography.H3>
+        <Typography.H3>Payouts</Typography.H3>
       </Main>
     </>
   )
