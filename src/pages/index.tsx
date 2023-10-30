@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 
 import Typography from '@/components/Typography';
 import { Main } from '@/styles/sharedstyles';
+import { TableLayout } from '@/components/TableLayout';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
       <Main className={inter.className}>
         <Typography.H3>Payouts</Typography.H3>
+        <TableLayout header='Payout History' />
       </Main>
     </>
   )

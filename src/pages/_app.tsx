@@ -14,6 +14,7 @@ const theme: DefaultTheme = {
       base: '#6F767E',
     },
   },
+  mobile: '768px',
 };
 
 export default function App({ Component, pageProps }: AppProps) {
