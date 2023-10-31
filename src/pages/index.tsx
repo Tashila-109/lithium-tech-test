@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { ColumnDef } from '@tanstack/react-table';
-import format from 'date-fns/format'
+import format from 'date-fns/format';
 
 import { PayoutsApi } from '@api/api';
 import { Payout } from '@lithium-types/models';
@@ -30,7 +30,11 @@ export default function Home() {
     {
       accessorKey: 'status',
       header: 'Status',
-      cell: (info: any) => <Tag label={info.getValue().toString()} />,
+      cell: (info: any) => {
+        const status = info.getValue().toString();
+        const color = status === 'Completed' ? '#60CA57' : '#6f767e66';
+        return <Tag label={status} color={color} />;
+      },
     },
     {
       accessorKey: 'value',

@@ -14,7 +14,7 @@ interface TagProps {
 const Tag: React.FC<TagProps> = ({ color, label, className, style }) => {
   return (
     <StyledTag color={color} className={className} style={style}>
-      <Typography.Base>{label}</Typography.Base>
+      {label}
     </StyledTag>
   );
 };

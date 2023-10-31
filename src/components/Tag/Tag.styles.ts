@@ -6,6 +6,9 @@ interface StyledTagProps {
 
 export const StyledTag = styled.span<StyledTagProps>`
   background-color: ${({ color }) => color || '#E5E5E5'};
+  color: ${({ theme }) => theme.colors.typography.title};
+  font-size: 14px;
+  font-weight: 600;
   border-radius: 6px;
-  padding: 0.125rem 0.5rem;
+  padding: 0.5rem;
 `;
