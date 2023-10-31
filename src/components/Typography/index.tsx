@@ -7,6 +7,7 @@ const H3 = styled.h3`
   line-height: 3rem;
   letter-spacing: -0.8px;
   color: ${({ color, theme }) => color || theme.colors.typography.header};
+  margin: unset;
 `;
 
 const Title = styled.h4`
@@ -16,6 +17,7 @@ const Title = styled.h4`
   line-height: 2rem;
   letter-spacing: -0.4px;
   color: ${({ color, theme }) => color || theme.colors.typography.title};
+  margin: unset;
 `;
 
 const Base = styled.p`

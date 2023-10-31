@@ -18,7 +18,7 @@ export const TableHeaderCell = styled.th`
 `;
 
 export const TableData = styled.td`
-  padding: 1.25rem 0;
+  padding: 1rem 0;
   font-size: 14px;
   font-weight: 600;
   color: #1a1d1f;

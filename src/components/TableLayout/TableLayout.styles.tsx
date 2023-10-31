@@ -18,4 +18,5 @@ export const TableLayoutWrapper = styled.div`
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3.75rem;
 `;
