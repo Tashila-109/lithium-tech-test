@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { ColumnDef } from '@tanstack/react-table';
@@ -11,10 +12,24 @@ import { Main } from '@/styles/sharedstyles';
 import { TableLayout } from '@/components/TableLayout';
 import { Tag } from '@/components/Tag';
 import { getFormattedCurrency } from '@/lib/data-formatters';
+import { useDebouncedTextChange } from '@/lib/hooks';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const [searchTermFilter, setSearchTermFilter] = useState<string>('');
+
+  const handleSearchTermChange = useCallback((value: string) => {
+    setSearchTermFilter(value);
+  }, []);
+
+  const [searchTerm, onSearchTermChange] = useDebouncedTextChange(handleSearchTermChange, 500);
+
+  const handleOnSearchClear = useCallback(() => {
+    setSearchTermFilter('');
+    onSearchTermChange('');
+  }, [onSearchTermChange]);
+
   const { data } = PayoutsApi.usePayoutsQuery();
 
   const columns: ColumnDef<Payout>[] = [
@@ -43,7 +58,6 @@ export default function Home() {
     },
   ];
 
-  console.log(data);
   return (
     <>
       <Head>
@@ -53,7 +67,14 @@ export default function Home() {
       </Head>
       <Main className={inter.className}>
         <Typography.H3>Payouts</Typography.H3>
-        <TableLayout header='Payout History' tData={data?.data} tColumns={columns} />
+        <TableLayout
+          header='Payout History'
+          tData={data?.data}
+          tColumns={columns}
+          onSearchChange={onSearchTermChange}
+          searchValue={searchTerm}
+          onSearchClear={handleOnSearchClear}
+        />
       </Main>
     </>
   );

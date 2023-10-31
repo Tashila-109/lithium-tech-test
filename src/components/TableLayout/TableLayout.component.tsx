@@ -7,46 +7,39 @@ import { Table } from '../Table';
 import Typography from '../Typography';
 
 import { HeaderTag, HeaderWrapper, TableLayoutWrapper } from './TableLayout.styles';
+import { SearchInput } from '../SearchInput';
 
 interface TableLayoutProps {
   header: string;
   tData?: Payout[];
   tColumns: ColumnDef<Payout>[];
-}
-interface BaseLayoutProps {
-  id: string;
-  children: React.ReactNode;
+  onSearchChange?: (value: string) => void;
+  onSearchClear?: () => void;
+  searchValue?: string;
 }
 
 interface TableHeaderProps {
   header: string;
+  onSearchChange?: (value: string) => void;
+  onSearchClear?: () => void;
+  searchValue?: string;
 }
 
-const TableLayout: React.FC<TableLayoutProps> = ({ header, tData, tColumns }) => {
+const TableLayout: React.FC<TableLayoutProps> = ({ header, tData, tColumns, onSearchChange, searchValue, onSearchClear }) => {
   return (
     <TableLayoutWrapper>
-      <TableHeader header={header} />
+      <TableHeader header={header} onSearchChange={onSearchChange} searchValue={searchValue} onSearchClear={onSearchClear} />
       <Table tData={tData} tColumns={tColumns} />
     </TableLayoutWrapper>
   );
 };
 
-export const BaseLayout: React.FC<BaseLayoutProps> = ({ id, children }) => {
-  //Base Layout
-  const baseLayoutClasses = 'min-h-[100vh] mx-auto w-[90%]';
-
-  return (
-    <div id={id} className={baseLayoutClasses}>
-      {children}
-    </div>
-  );
-};
-
-export const TableHeader: React.FC<TableHeaderProps> = ({ header }) => {
+export const TableHeader: React.FC<TableHeaderProps> = ({ header, onSearchChange, searchValue, onSearchClear }) => {
   return (
     <HeaderWrapper>
       <HeaderTag />
       <Typography.Title>{header}</Typography.Title>
+      <SearchInput id='Payouts-search' onChange={onSearchChange} value={searchValue} onClear={onSearchClear} />
     </HeaderWrapper>
   );
 };
