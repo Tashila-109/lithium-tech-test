@@ -5,8 +5,10 @@ import { UseQueryOptions } from '../types';
 import { GetPayoutsResponse } from '../types';
 
 // Get Payouts
-export const payoutsQuery = () =>
-  selectData<GetPayoutsResponse>(LithiumApiAxiosInstance.get('/payouts'));
+export const payoutsQuery = async () => {
+  const response: GetPayoutsResponse = await LithiumApiAxiosInstance.get('/payouts');
+  return response;
+};
 
 export const useCorporateQuery = (options?: UseQueryOptions<GetPayoutsResponse>) =>
   useQuery({
