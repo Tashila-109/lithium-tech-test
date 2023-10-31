@@ -1,11 +1,17 @@
+import { ColumnDef } from '@tanstack/react-table';
 
+import { Payout } from '@lithium-types/models';
+
+import { Flex } from '@/styles/sharedstyles';
+import { Table } from '../Table';
 import Typography from '../Typography';
 
-import { HeaderTag, HeaderWrapper } from './TableLayout.styles';
+import { HeaderTag, HeaderWrapper, TableLayoutWrapper } from './TableLayout.styles';
 
 interface TableLayoutProps {
   header: string;
-  // data: any[];
+  tData?: Payout[];
+  tColumns: ColumnDef<Payout>[];
 }
 interface BaseLayoutProps {
   id: string;
@@ -16,8 +22,13 @@ interface TableHeaderProps {
   header: string;
 }
 
-const TableLayout: React.FC<TableLayoutProps> = ({ header }) => {
-  return <TableHeader header={header} />;
+const TableLayout: React.FC<TableLayoutProps> = ({ header, tData, tColumns }) => {
+  return (
+    <TableLayoutWrapper>
+      <TableHeader header={header} />
+      <Table tData={tData} tColumns={tColumns} />
+    </TableLayoutWrapper>
+  );
 };
 
 export const BaseLayout: React.FC<BaseLayoutProps> = ({ id, children }) => {

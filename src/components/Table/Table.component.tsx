@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
 
 import { Payout } from '@lithium-types/models';
@@ -6,13 +7,15 @@ import { TableContainer, TableData, TableHeaderCell, TableRow } from './Table.st
 import Typography from '../Typography';
 
 interface TableProps {
-  tData: Payout[];
+  tData?: Payout[];
   tColumns: ColumnDef<Payout>[];
 }
 
-const Table: React.FC<TableProps> = ({ tData, tColumns }) => {
+const Table: React.FC<TableProps> = ({ tData = [], tColumns }) => {
+  const data = useMemo(() => tData, [tData])
+
   const table = useReactTable({
-    data: tData,
+    data,
     columns: tColumns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

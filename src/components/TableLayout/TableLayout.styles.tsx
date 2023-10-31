@@ -11,3 +11,11 @@ export const HeaderTag = styled.div`
 export const HeaderWrapper = styled(Flex)`
   gap: 1rem;
 `;
+
+export const TableLayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+`;
