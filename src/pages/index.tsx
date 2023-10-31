@@ -10,7 +10,7 @@ import { Payout } from '@lithium-types/models';
 import Typography from '@/components/Typography';
 import { Main } from '@/styles/sharedstyles';
 import { TableLayout } from '@/components/TableLayout';
-import {TableEmptyState} from '@/components/Table';
+import { TableEmptyState } from '@/components/Table';
 import { Tag } from '@/components/Tag';
 import { getFormattedCurrency } from '@/lib/data-formatters';
 import { useDebouncedTextChange } from '@/lib/hooks';
@@ -36,6 +36,8 @@ export default function Home() {
   const payoutsSearchQuery = PayoutsApi.useSearchPayoutsQuery(searchTermFilter, {
     enabled: !!searchTermFilter,
   });
+
+  const payoutsLoading = payoutsQuery.isLoading || (payoutsSearchQuery.isFetching && payoutsSearchQuery.isLoading);
 
   let rowData: Payout[] | undefined;
   if (searchTermFilter.length > 0 && !payoutsSearchQuery.isLoading && !payoutsSearchQuery.isError) {
@@ -86,7 +88,7 @@ export default function Home() {
           onSearchChange={onSearchTermChange}
           searchValue={searchTerm}
           onSearchClear={handleOnSearchClear}
-          isLoading={payoutsQuery.isLoading}
+          isLoading={payoutsLoading}
           tableEmptyState={<TableEmptyState heading='No Payouts' description='There are no Payouts to show.' />}
         />
       </Main>
