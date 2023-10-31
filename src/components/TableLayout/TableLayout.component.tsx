@@ -40,7 +40,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({ header, onSearchChange
     <HeaderWrapper>
       <HeaderTag />
       <Typography.Title>{header}</Typography.Title>
-      <SearchInput id='Payouts-search' onChange={onSearchChange} value={searchValue} onClear={onSearchClear} />
+      <SearchInput id='Payouts-search' onChange={onSearchChange} value={searchValue} onClear={onSearchClear} clearable />
     </HeaderWrapper>
   );
 };

@@ -1,6 +1,6 @@
-import {AiOutlineSearch, AiOutlineClose} from 'react-icons/ai'
+import { AiOutlineSearch } from 'react-icons/ai';
 
-import { SearchContainer, SearchIcon, StyledInput } from './SearchInput.styles';
+import { ClearButton, SearchContainer, SearchIcon, StyledInput } from './SearchInput.styles';
 
 export interface SearchInputProps {
   id: string;
@@ -27,28 +27,20 @@ const SearchInputComponent: React.FC<SearchInputProps> = ({
 
   return (
     <>
-      <SearchContainer
-        id={`${id}-container`}
-        disabled={disabled}
-      >
-        <SearchIcon className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[13.5px]">
+      <SearchContainer id={`${id}-container`} disabled={disabled}>
+        <SearchIcon>
           <AiOutlineSearch />
         </SearchIcon>
         <StyledInput
           id={`${id}-search-input`}
-          type="search"
+          type='search'
           placeholder={placeholderText}
           disabled={disabled}
           onChange={handleInputChange}
           value={value}
-          autoComplete="off"
+          autoComplete='off'
         />
-        {clearable && value && (
-          <AiOutlineClose
-            id={`${id}-clear-button`}
-            onClick={onClear}
-          />
-        )}
+        {clearable && value && <ClearButton id={`${id}-clear-button`} onClick={onClear} />}
       </SearchContainer>
     </>
   );
