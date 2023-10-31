@@ -10,6 +10,7 @@ const theme: DefaultTheme = {
     primary: '#ffffff',
     secondary: '#0070f3',
     background: '#FCFCFC',
+    tableBackground: '#f4f4f480',
     typography: {
       header: '#272B30',
       title: '#1A1D1F',
