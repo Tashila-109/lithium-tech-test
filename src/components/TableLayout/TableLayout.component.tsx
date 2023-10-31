@@ -27,6 +27,19 @@ interface TableHeaderProps {
   searchValue?: string;
 }
 
+export const TableHeader: React.FC<TableHeaderProps> = ({ header, onSearchChange, searchValue, onSearchClear }) => {
+  return (
+    <HeaderWrapper>
+      <HeaderTag />
+      <Typography.Title>{header}</Typography.Title>
+      <SearchInput id='Payouts-search' onChange={onSearchChange} value={searchValue} onClear={onSearchClear} clearable />
+    </HeaderWrapper>
+  );
+};
+
+/**
+ * A layout component for rendering a table with header and search functionality.
+ */
 const TableLayout: React.FC<TableLayoutProps> = ({
   header,
   tData,
@@ -45,14 +58,5 @@ const TableLayout: React.FC<TableLayoutProps> = ({
   );
 };
 
-export const TableHeader: React.FC<TableHeaderProps> = ({ header, onSearchChange, searchValue, onSearchClear }) => {
-  return (
-    <HeaderWrapper>
-      <HeaderTag />
-      <Typography.Title>{header}</Typography.Title>
-      <SearchInput id='Payouts-search' onChange={onSearchChange} value={searchValue} onClear={onSearchClear} clearable />
-    </HeaderWrapper>
-  );
-};
 
 export default TableLayout;

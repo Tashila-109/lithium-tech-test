@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { selectData, LithiumApiAxiosInstance } from '../ApiInstance';
+import { LithiumApiAxiosInstance } from '../ApiInstance';
 import { SearchPayoutsResponse, UseQueryOptions } from '../types';
 import { GetPayoutsResponse } from '../types';
 
@@ -10,6 +10,11 @@ export const payoutsQuery = async () => {
   return response?.data;
 };
 
+/**
+ * Fetches payouts data.
+ * @param options - The options for the query.
+ * @returns The result of the query.
+ */
 export const usePayoutsQuery = (options?: UseQueryOptions<GetPayoutsResponse>) =>
   useQuery({
     queryKey: ['payouts'],
@@ -23,6 +28,12 @@ export const searchPayoutsQuery = async (query: string) => {
   return response?.data;
 };
 
+/**
+ * A hook to search payouts.
+ * @param query - The search query.
+ * @param options - The options for the query.
+ * @returns The result of the query.
+ */
 export const useSearchPayoutsQuery = (query: string, options?: UseQueryOptions<SearchPayoutsResponse>) =>
   useQuery({
     queryKey: ['search', query],

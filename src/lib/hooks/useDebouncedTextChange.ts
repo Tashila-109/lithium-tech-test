@@ -8,6 +8,12 @@ type ValueSetter = (value: Value) => void;
 type DebounceTextChangeResult = [Value, ChangeHandler, ValueSetter];
 
 // Define the hook function
+/**
+ * A hook that provides a debounced version of a text change callback function.
+ * @param callback - A function to be called when the text changes.
+ * @param delay - The delay (in milliseconds) before the callback is called. Default is 0.
+ * @returns An array containing the current text value, the onChange function, and the setText function.
+ */
 export const useDebouncedTextChange = (
   callback: (text: string) => void, // A function to be called when the text changes
   delay: number = 0 // The delay (in milliseconds) before the callback is called

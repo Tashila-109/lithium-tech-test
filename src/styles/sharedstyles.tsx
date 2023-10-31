@@ -15,6 +15,9 @@ const Main = styled.main`
   align-items: flex-start;
 `;
 
+/**
+ * A styled div with flexbox properties.
+ */
 const Flex = styled.div`
   display: flex;
   align-items: center;

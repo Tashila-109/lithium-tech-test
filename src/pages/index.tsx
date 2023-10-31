@@ -18,6 +18,9 @@ import { useDebouncedTextChange } from '@/lib/hooks';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  // ------------------------------------------------------------
+  // #region Configure Search Input -----------------------------
+  // ------------------------------------------------------------
   const [searchTermFilter, setSearchTermFilter] = useState<string>('');
 
   const handleSearchTermChange = useCallback((value: string) => {
@@ -30,6 +33,12 @@ export default function Home() {
     setSearchTermFilter('');
     onSearchTermChange('');
   }, [onSearchTermChange]);
+
+  // #endregion -------------------------------------------------
+
+  // ------------------------------------------------------------
+  // #region Configure Payouts queries and table ----------------
+  // ------------------------------------------------------------
 
   const payoutsQuery = PayoutsApi.usePayoutsQuery();
 
@@ -71,6 +80,8 @@ export default function Home() {
       cell: (info: any) => getFormattedCurrency(info.getValue()),
     },
   ];
+
+  // #endregion -------------------------------------------------
 
   return (
     <>

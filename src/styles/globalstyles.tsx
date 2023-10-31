@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
+/**
+ * GlobalStyles component to apply global styles to the app
+ */
 const GlobalStyles = createGlobalStyle`
   html,
   body {
