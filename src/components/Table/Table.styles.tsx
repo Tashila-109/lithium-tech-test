@@ -48,3 +48,31 @@ export const SkeletonCell = styled.div`
     }
   }
 `;
+
+export const EmptyStateContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  margin-top: 80px;
+  text-align: center;
+  white-space: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const EmptyStateHeading = styled.h2`
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600; 
+`;
+
+export const EmptyStateDescription = styled.h3`
+  margin-bottom: 16px;
+  width: 350px;
+  font-size: 16px;
+  font-weight: 300; 
+`;

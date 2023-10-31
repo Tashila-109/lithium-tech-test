@@ -10,6 +10,7 @@ import { Payout } from '@lithium-types/models';
 import Typography from '@/components/Typography';
 import { Main } from '@/styles/sharedstyles';
 import { TableLayout } from '@/components/TableLayout';
+import {TableEmptyState} from '@/components/Table';
 import { Tag } from '@/components/Tag';
 import { getFormattedCurrency } from '@/lib/data-formatters';
 import { useDebouncedTextChange } from '@/lib/hooks';
@@ -86,6 +87,7 @@ export default function Home() {
           searchValue={searchTerm}
           onSearchClear={handleOnSearchClear}
           isLoading={payoutsQuery.isLoading}
+          tableEmptyState={<TableEmptyState heading='No Payouts' description='There are no Payouts to show.' />}
         />
       </Main>
     </>

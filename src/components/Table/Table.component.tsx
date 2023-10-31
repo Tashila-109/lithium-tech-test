@@ -6,14 +6,16 @@ import { Payout } from '@lithium-types/models';
 import { TableContainer, TableData, TableHeaderCell, TableRow } from './Table.styles';
 import Typography from '../Typography';
 import TableLoadingSkeleton from './TableLoadingSkeleton.component';
+import TableEmptyState from './TableEmptyState.component';
 
 interface TableProps {
   tData?: Payout[];
   tColumns: ColumnDef<Payout>[];
   isLoading?: boolean;
+  tableEmptyState?: React.ReactNode;
 }
 
-const Table: React.FC<TableProps> = ({ tData = [], tColumns, isLoading = false }) => {
+const Table: React.FC<TableProps> = ({ tData = [], tColumns, isLoading = false, tableEmptyState }) => {
   const data = useMemo(() => tData, [tData]);
 
   const table = useReactTable({
@@ -38,20 +40,25 @@ const Table: React.FC<TableProps> = ({ tData = [], tColumns, isLoading = false }
           ))}
         </thead>
         <tbody>
-        {isLoading ? (
+          {isLoading ? (
             <TableLoadingSkeleton table={table} pageSize={10} />
           ) : (
             <>
-          {table.getRowModel().rows.map(row => (
-            <TableRow key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <TableData key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableData>
-              ))}
-            </TableRow>
-          ))}
+              {!data.length ? (
+                <>{tableEmptyState}</>
+              ) : (
+                <>
+                  {table.getRowModel().rows.map(row => (
+                    <TableRow key={row.id}>
+                      {row.getVisibleCells().map(cell => (
+                        <TableData key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableData>
+                      ))}
+                    </TableRow>
+                  ))}
+                </>
+              )}
             </>
           )}
-
         </tbody>
       </TableContainer>
     </>
