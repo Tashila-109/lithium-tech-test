@@ -16,7 +16,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@api/*": ["./packages/lithium-api/*"],
-      "@models/*": ["./packages/lithium-types/models/*"],
+      "@lithium-types/*": ["./packages/lithium-types/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

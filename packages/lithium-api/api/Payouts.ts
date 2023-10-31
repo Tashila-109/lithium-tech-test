@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { selectData, LithiumApiAxiosInstance } from '../ApiInstance';
+import { LithiumApiAxiosInstance } from '../ApiInstance';
 import { UseQueryOptions } from '../types';
 import { GetPayoutsResponse } from '../types';
 
@@ -10,7 +10,7 @@ export const payoutsQuery = async () => {
   return response;
 };
 
-export const useCorporateQuery = (options?: UseQueryOptions<GetPayoutsResponse>) =>
+export const usePayoutsQuery = (options?: UseQueryOptions<GetPayoutsResponse>) =>
   useQuery({
     queryKey: ['payouts'],
     queryFn: () => payoutsQuery(),

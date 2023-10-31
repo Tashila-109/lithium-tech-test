@@ -1,8 +1,7 @@
-import { Payout } from '@models/Payout';
-
-type PayoutsResponse = {
-  response: Payout[];
-};
+import { Payout, ModelMetadata } from '@lithium-types/models';
 
 // Get Request to get Payouts
-export type GetPayoutsResponse = PayoutsResponse;
+export type GetPayoutsResponse = {
+  data: Payout[];
+  metadata: ModelMetadata;
+};
