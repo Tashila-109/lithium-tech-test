@@ -10,7 +10,7 @@ import { Payout } from '@lithium-types/models';
 import Typography from '@/components/Typography';
 import { Main } from '@/styles/sharedstyles';
 import { TableLayout } from '@/components/TableLayout';
-import { TableEmptyState } from '@/components/Table';
+import { TableEmptyState, TableCellText } from '@/components/Table';
 import { Tag } from '@/components/Tag';
 import { getFormattedCurrency } from '@/lib/data-formatters';
 import { useDebouncedTextChange } from '@/lib/hooks';
@@ -59,7 +59,7 @@ export default function Home() {
     {
       accessorKey: 'dateAndTime',
       header: 'Date & Time',
-      cell: (info: any) => <Typography.Base>{format(new Date(info.getValue()), 'ccc, LLL d, kk:mm')}</Typography.Base>,
+      cell: (info: any) => <TableCellText>{format(new Date(info.getValue()), 'ccc, LLL d, kk:mm')}</TableCellText>,
     },
     {
       accessorKey: 'username',

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Typography from '../Typography';
 
 export const TableContainer = styled.table`
   width: 100%;
@@ -15,6 +16,9 @@ export const TableRow = styled.tr`
 export const TableHeaderCell = styled.th`
   padding: 1.25rem 0;
   text-align: left;
+  &:nth-child(1) {
+    padding-left: 1.5rem;
+  }
 `;
 
 export const TableData = styled.td`
@@ -22,6 +26,10 @@ export const TableData = styled.td`
   font-size: 14px;
   font-weight: 600;
   color: #1a1d1f;
+`;
+
+export const TableCellText = styled(Typography.Base)`
+  padding-left: 1.5rem;
 `;
 
 export const SkeletonCell = styled.div`
@@ -67,12 +75,12 @@ export const EmptyStateContainer = styled.div`
 export const EmptyStateHeading = styled.h2`
   margin-bottom: 12px;
   font-size: 24px;
-  font-weight: 600; 
+  font-weight: 600;
 `;
 
 export const EmptyStateDescription = styled.h3`
   margin-bottom: 16px;
   width: 350px;
   font-size: 16px;
-  font-weight: 300; 
+  font-weight: 300;
 `;
