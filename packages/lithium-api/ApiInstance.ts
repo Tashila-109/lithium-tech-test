@@ -12,9 +12,3 @@ export const LithiumApiAxiosInstance = Axios.create({
   timeout: 20000,
   timeoutErrorMessage: 'Network timeout',
 });
-
-export const selectData = async <T>(request: Promise<ApiResponse<T>>) => {
-  const data = (await request).data;
-
-  return data;
-};
