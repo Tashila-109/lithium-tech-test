@@ -30,7 +30,18 @@ export default function Home() {
     onSearchTermChange('');
   }, [onSearchTermChange]);
 
-  const { data } = PayoutsApi.usePayoutsQuery();
+  const payoutsQuery = PayoutsApi.usePayoutsQuery();
+
+  const payoutsSearchQuery = PayoutsApi.useSearchPayoutsQuery(searchTermFilter, {
+    enabled: !!searchTermFilter,
+  });
+
+  let rowData: Payout[] | undefined;
+  if (searchTermFilter.length > 0 && !payoutsSearchQuery.isLoading && !payoutsSearchQuery.isError) {
+    rowData = payoutsSearchQuery?.data;
+  } else if (!payoutsQuery.isLoading && !payoutsQuery.isError) {
+    rowData = payoutsQuery?.data?.data;
+  }
 
   const columns: ColumnDef<Payout>[] = [
     {
@@ -69,7 +80,7 @@ export default function Home() {
         <Typography.H3>Payouts</Typography.H3>
         <TableLayout
           header='Payout History'
-          tData={data?.data}
+          tData={rowData}
           tColumns={columns}
           onSearchChange={onSearchTermChange}
           searchValue={searchTerm}

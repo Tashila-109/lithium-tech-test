@@ -5,3 +5,5 @@ export type GetPayoutsResponse = {
   data: Payout[];
   metadata: ModelMetadata;
 };
+
+export type SearchPayoutsResponse = Payout[];
