@@ -16,6 +16,7 @@ interface TableLayoutProps {
   onSearchChange?: (value: string) => void;
   onSearchClear?: () => void;
   searchValue?: string;
+  isLoading?: boolean;
 }
 
 interface TableHeaderProps {
@@ -25,11 +26,11 @@ interface TableHeaderProps {
   searchValue?: string;
 }
 
-const TableLayout: React.FC<TableLayoutProps> = ({ header, tData, tColumns, onSearchChange, searchValue, onSearchClear }) => {
+const TableLayout: React.FC<TableLayoutProps> = ({ header, tData, tColumns, onSearchChange, searchValue, onSearchClear, isLoading }) => {
   return (
     <TableLayoutWrapper>
       <TableHeader header={header} onSearchChange={onSearchChange} searchValue={searchValue} onSearchClear={onSearchClear} />
-      <Table tData={tData} tColumns={tColumns} />
+      <Table tData={tData} tColumns={tColumns} isLoading={isLoading} />
     </TableLayoutWrapper>
   );
 };

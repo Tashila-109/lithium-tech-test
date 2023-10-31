@@ -85,6 +85,7 @@ export default function Home() {
           onSearchChange={onSearchTermChange}
           searchValue={searchTerm}
           onSearchClear={handleOnSearchClear}
+          isLoading={payoutsQuery.isLoading}
         />
       </Main>
     </>

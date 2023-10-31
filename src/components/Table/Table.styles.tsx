@@ -23,3 +23,28 @@ export const TableData = styled.td`
   font-weight: 600;
   color: #1a1d1f;
 `;
+
+export const SkeletonCell = styled.div`
+  width: 95%;
+  animation: pulse 1.5s infinite;
+
+  div {
+    margin: 1.25rem 0;
+    height: 18px;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: #e5e5e5;
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: #eaeaea;
+    }
+    50% {
+      background-color: #d5d5d5;
+    }
+    100% {
+      background-color: #eaeaea;
+    }
+  }
+`;

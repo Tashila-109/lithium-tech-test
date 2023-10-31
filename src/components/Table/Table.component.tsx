@@ -5,14 +5,16 @@ import { Payout } from '@lithium-types/models';
 
 import { TableContainer, TableData, TableHeaderCell, TableRow } from './Table.styles';
 import Typography from '../Typography';
+import TableLoadingSkeleton from './TableLoadingSkeleton.component';
 
 interface TableProps {
   tData?: Payout[];
   tColumns: ColumnDef<Payout>[];
+  isLoading?: boolean;
 }
 
-const Table: React.FC<TableProps> = ({ tData = [], tColumns }) => {
-  const data = useMemo(() => tData, [tData])
+const Table: React.FC<TableProps> = ({ tData = [], tColumns, isLoading = false }) => {
+  const data = useMemo(() => tData, [tData]);
 
   const table = useReactTable({
     data,
@@ -36,6 +38,10 @@ const Table: React.FC<TableProps> = ({ tData = [], tColumns }) => {
           ))}
         </thead>
         <tbody>
+        {isLoading ? (
+            <TableLoadingSkeleton table={table} pageSize={10} />
+          ) : (
+            <>
           {table.getRowModel().rows.map(row => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map(cell => (
@@ -43,6 +49,9 @@ const Table: React.FC<TableProps> = ({ tData = [], tColumns }) => {
               ))}
             </TableRow>
           ))}
+            </>
+          )}
+
         </tbody>
       </TableContainer>
     </>
